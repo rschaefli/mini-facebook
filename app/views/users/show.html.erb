@@ -37,7 +37,7 @@
 	<% for user in @user.friends %>
 	<li>
 		<%= h user.first_name %>
-		(<%= link_to "show", friendship, :method => :show %>)
+		(<%= link_to "show", user, :method => :get %>)
 	</li>
 	<% end %>
 </ul>
@@ -47,7 +47,7 @@
 	<% for user in @non_friends %>
 	<li>
 		<%= h user.first_name %>
-        (<%= link_to "create", friendship_path(@user, :query => { friend_id: => user.id}), :method => :post %>)
+        (<%= link_to "add", friendship_path(@user, :query => { friend_id: user.id}), :method => :post %>)
 	</li>
 	<% end %>
 </ul>

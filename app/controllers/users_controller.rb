@@ -12,11 +12,12 @@ class UsersController < ApplicationController
   def show
     @friends = @user.friends.limit(5)
 
+    # This is a placeholder
     # Use find_by SQL query to get non-friends
     # Put it in a scope in the User model
-    #@non_friends = @user.except(@user.friends)
-    
-    puts @friendships.size
+    @non_friends = User.all
+
+    puts @friends.size
   end
 
   # GET /users/new
