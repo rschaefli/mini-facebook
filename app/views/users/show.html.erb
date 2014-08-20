@@ -34,29 +34,23 @@
 
 <h2>Friends</h2>
 <ul>
-	<% for friendship in @user.friendships %>
+	<% for user in @user.friends %>
 	<li>
-		<%= h friendship.friend.username %>
-		(<%= link_to "remove", friendship, :method => :delete %>)
+		<%= h user.first_name %>
+		(<%= link_to "show", friendship, :method => :show %>)
 	</li>
 	<% end %>
 </ul>
 
-<p>
-	<%= link_to "Find Friends", users_path %>
-</p>
-
-<h2>Friended by Users</h2>
+<h2>People you may know</h2>
 <ul>
-	<% for user in @user.inverse_friends %>
+	<% for user in @non_friends %>
 	<li>
-		<%= h user.username %>
+		<%= h user.first_name %>
+        (<%= link_to "create", friendship_path(@user, :query => { friend_id: => user.id}), :method => :post %>)
 	</li>
 	<% end %>
 </ul>
-
-<td> <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %> </td>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

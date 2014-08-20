@@ -10,10 +10,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @friendships = Friendship.all
+    @friends = @user.friends.limit(5)
+
+    # Use find_by SQL query to get non-friends
+    # Put it in a scope in the User model
+    #@non_friends = @user.except(@user.friends)
     
     puts @friendships.size
-    #@friendships = @user.friendships
   end
 
   # GET /users/new
