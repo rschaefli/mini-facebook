@@ -34,20 +34,20 @@
 
 <h2>Friends</h2>
 <ul>
-	<% for user in @user.friends %>
+	<% for friend in @user.friends %>
 	<li>
-		<%= h user.first_name %>
-		(<%= link_to "show", user, :method => :get %>)
+		<%= h friend.first_name %>
+		(<%= link_to "show", friend, :method => :get %>)
 	</li>
 	<% end %>
 </ul>
 
 <h2>People you may know</h2>
 <ul>
-	<% for user in @non_friends %>
+	<% for nonfriend in @non_friends %>
 	<li>
-		<%= h user.first_name %>
-        (<%= link_to "add", friendship_path(@user, :query => { friend_id: user.id}), :method => :post %>)
+		<%= h nonfriend.first_name %>
+        (<%= link_to "Add friend", friendships_path(@user, :query => { friend_id: nonfriend.id, user_id: @user.id }), :method => :post %>)
 	</li>
 	<% end %>
 </ul>

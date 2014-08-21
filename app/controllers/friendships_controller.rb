@@ -4,9 +4,12 @@ class FriendshipsController < ApplicationController
    # /user/1/friendships
    # Post to that with the friend id
 
-  def add
-    @user = User.find(params[:id])
-    @friend = User.find([params[:friend_id])
+  def create
+    puts params[:query][:user_id]
+    puts params[:query][:friend_id]
+
+    @user = User.find(params[:query][:user_id])
+    @friend = User.find(params[:query][:friend_id])
 
     # Add each other as friends
     @user.friends << @friend
