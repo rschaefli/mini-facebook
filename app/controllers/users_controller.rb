@@ -14,10 +14,12 @@ class UsersController < ApplicationController
 
     # This is a placeholder
     # Use find_by SQL query to get non-friends
+    # Should contain:
+    #   Users who this user is not friend with AND
+    #   Users who are not friends with this user AND
+    #   Not this user
     # Put it in a scope in the User model
     @non_friends = User.all
-
-    puts @friends.size
   end
 
   # GET /users/new

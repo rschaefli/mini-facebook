@@ -5,16 +5,16 @@ class FriendshipsController < ApplicationController
    # Post to that with the friend id
 
   def create
-    puts params[:query][:user_id]
-    puts params[:query][:friend_id]
-
     @user = User.find(params[:query][:user_id])
     @friend = User.find(params[:query][:friend_id])
+
+    puts @user.id
+    puts @friend.id
 
     # Add each other as friends
     @user.friends << @friend
     @friend.friends << @user
-    redirect_to root_url
+    redirect_to @user
 
     #@friendship = @user.friendships.build(:friend_id => params[:friend_id])
     #if @friendship.save
